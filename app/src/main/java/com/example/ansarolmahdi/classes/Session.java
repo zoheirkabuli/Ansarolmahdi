@@ -5,8 +5,7 @@ public class Session {
     private String weekDay;
     private Date date;
 
-    public Session(int sessionID, int courseID, int sessionNum, String weekDay, Date date) {
-        this.sessionID = sessionID;
+    public Session(int courseID, int sessionNum, String weekDay, Date date) {
         this.courseID = courseID;
         this.sessionNum = sessionNum;
         this.weekDay = weekDay;

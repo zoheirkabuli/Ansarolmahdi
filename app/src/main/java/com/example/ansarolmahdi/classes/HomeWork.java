@@ -5,8 +5,7 @@ public class HomeWork {
     private String text;
     private Date deadline;
 
-    public HomeWork(int homeworkID, int sessionID, String text, Date deadline) {
-        this.homeworkID = homeworkID;
+    public HomeWork(int sessionID, String text, Date deadline) {
         this.sessionID = sessionID;
         this.text = text;
         this.deadline = deadline;

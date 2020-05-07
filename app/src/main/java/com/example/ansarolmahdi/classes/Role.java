@@ -4,8 +4,7 @@ public class Role {
     private int roleID;
     private String title;
 
-    public Role(int roleID, String title) {
-        this.roleID = roleID;
+    public Role(String title) {
         this.title = title;
     }
 

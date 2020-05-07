@@ -3,6 +3,11 @@ package com.example.ansarolmahdi.classes;
 public class Student extends Person {
     private int studentID,parentID;
 
+    public Student(String fName, String lName, String eMail, String password, int parentID) {
+        super(fName, lName, eMail, password);
+        this.parentID = parentID;
+    }
+
     public int getStudentID() {
         return studentID;
     }

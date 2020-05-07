@@ -6,8 +6,7 @@ public class Course {
     private Date startDate;
     private Time time;
 
-    public Course(int courseID, int userID, int numberOfSessions, int cost, String title, Date startDate, Time time) {
-        this.courseID = courseID;
+    public Course(int userID, int numberOfSessions, int cost, String title, Date startDate, Time time) {
         this.userID = userID;
         this.numberOfSessions = numberOfSessions;
         this.cost = cost;

@@ -6,8 +6,7 @@ public class Exam {
     private Time time;
     private String title;
 
-    public Exam(int examID, int courseID, Date date, Time time, String title) {
-        this.examID = examID;
+    public Exam(int courseID, Date date, Time time, String title) {
         this.courseID = courseID;
         this.date = date;
         this.time = time;
