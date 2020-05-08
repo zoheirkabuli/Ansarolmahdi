@@ -16,12 +16,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
-        />
+        android:layout_margin="10dp"
+        app:menu_showShadow="true"
+        app:menu_fab_label=""
+        app:menu_openDirection="up">
+
+        <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab_student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fab_size="mini"
+        app:fab_label="Student"
+        android:src="@drawable/ic_supervisor_account_black_24dp"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_teacher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_size="mini"
+            app:fab_label="Teacher"
+            android:src="@drawable/ic_person_black_24dp"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_class"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_size="mini"
+            app:fab_label="Class"
+            android:src="@drawable/ic_class_black_24dp"/>
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
 
 </RelativeLayout>
