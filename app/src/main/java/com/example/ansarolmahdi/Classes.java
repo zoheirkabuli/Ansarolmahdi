@@ -2,6 +2,7 @@ package com.example.ansarolmahdi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -38,7 +39,8 @@ public class Classes extends AppCompatActivity {
         fabClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast("Class");
+                Intent intent = new Intent(Classes.this,AddClass.class);
+                startActivity(intent);
             }
         });
 
