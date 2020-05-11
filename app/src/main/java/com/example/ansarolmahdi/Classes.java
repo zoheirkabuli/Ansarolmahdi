@@ -31,7 +31,8 @@ public class Classes extends AppCompatActivity {
         fabTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toast("Teacher");
+                Intent intent = new Intent(Classes.this,AddTeacher.class);
+                startActivity(intent);
             }
         });
 
