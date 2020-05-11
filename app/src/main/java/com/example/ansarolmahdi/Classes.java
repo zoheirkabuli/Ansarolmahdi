@@ -1,8 +1,10 @@
 package com.example.ansarolmahdi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -12,7 +14,7 @@ import com.github.clans.fab.FloatingActionButton;
 public class Classes extends AppCompatActivity {
 
     private FloatingActionButton fabStudent,fabClass,fabTeacher;
-
+    private Toolbar mToolbar;
 
 
     @Override
@@ -21,6 +23,10 @@ public class Classes extends AppCompatActivity {
         setContentView(R.layout.activity_classes);
 
         init();
+
+        setSupportActionBar(mToolbar);
+        setTitle("Classes");
+        mToolbar.setTitleTextColor(Color.WHITE);
 
         fabTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +56,7 @@ public class Classes extends AppCompatActivity {
         fabClass = findViewById(R.id.fab_class);
         fabStudent = findViewById(R.id.fab_student);
         fabTeacher = findViewById(R.id.fab_teacher);
+        mToolbar = findViewById(R.id.tb_classes);
     }
 
 
