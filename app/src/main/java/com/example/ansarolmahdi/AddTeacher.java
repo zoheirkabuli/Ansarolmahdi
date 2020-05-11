@@ -16,7 +16,7 @@ public class AddTeacher extends AppCompatActivity {
 
     private Toolbar tToolbar;
     private Button selectClasses;
-    String[] items = {"Easy", "Medium", "Hard", "Very Hard"};
+    String[] items = {"class1", "class2", "class3", "class4"};
     boolean[] checkItems = {false,false,false,false};
 
 
@@ -47,7 +47,7 @@ public class AddTeacher extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Select")
                 .setCancelable(false)
-                .setMultiChoiceItems(items,checkItems,null)
+                .setMultiChoiceItems(items,null,null)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
