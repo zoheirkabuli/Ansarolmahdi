@@ -21,7 +21,7 @@ public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemList
 
     private Toolbar ciToolbar;
     private Button info,sessions,students,attendance,homeWorks,exams;
-    private RecyclerView rv_sessions;
+    private RecyclerView rvSessions;
     private MyAdapter myAdapter;
     private ArrayList<String> test = new ArrayList<>();
 
@@ -31,8 +31,24 @@ public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemList
         setContentView(R.layout.activity_class_info);
         init();
 
+        test.add("Test1");
+        test.add("Test2");
+        test.add("Test3");
+        test.add("Test4");
+        test.add("Test5");
+        test.add("Test6");
+        test.add("Test7");
+        test.add("Test8");
+        test.add("Test9");
+        test.add("Test10");
+
+
+        myAdapter = new MyAdapter(ClassInfo.this,test,this);
+        rvSessions.setLayoutManager(new LinearLayoutManager(ClassInfo.this));
+        rvSessions.setAdapter(myAdapter);
+
         setSupportActionBar(ciToolbar);
-        setTitle("Classes");
+        setTitle("دوره آزمایشی");
         ciToolbar.setTitleTextColor(Color.WHITE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -43,27 +59,13 @@ public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemList
             }
         });
 
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        sessions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
     }
 
     public void init(){
-        info = findViewById(R.id.btn_info);
-        sessions = findViewById(R.id.btn_sessions);
+//        info = findViewById(R.id.btn_info);
+//        sessions = findViewById(R.id.btn_sessions);
         ciToolbar = findViewById(R.id.ciToolbar);
-//        rv_sessions = findViewById(R.id.rv_sessions);
+        rvSessions = findViewById(R.id.rv_sessions);
     }
 
 
