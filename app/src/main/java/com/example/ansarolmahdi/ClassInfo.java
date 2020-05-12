@@ -46,7 +46,7 @@ public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemList
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                runAlert();
+
             }
         });
 
@@ -54,7 +54,6 @@ public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemList
             @Override
             public void onClick(View view) {
 
-                runAlert();
             }
         });
 
@@ -64,7 +63,7 @@ public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemList
         info = findViewById(R.id.btn_info);
         sessions = findViewById(R.id.btn_sessions);
         ciToolbar = findViewById(R.id.ciToolbar);
-        rv_sessions = findViewById(R.id.rv_sessions);
+//        rv_sessions = findViewById(R.id.rv_sessions);
     }
 
 
@@ -83,15 +82,15 @@ public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemList
 //                .create()
 //                .show();
 
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-
-
-        new AlertDialog.Builder(this)
-                .setView(LayoutInflater.from(this).inflate(R.layout.info_dialog
-                        ,viewGroup
-                        ,false))
-                .create()
-                .show();
+//        ViewGroup viewGroup = findViewById(android.R.id.content);
+//
+//
+//        new AlertDialog.Builder(this)
+//                .setView(LayoutInflater.from(this).inflate(R.layout.info_dialog
+//                        ,viewGroup
+//                        ,false))
+//                .create()
+//                .show();
 
     }
 
