@@ -14,7 +14,7 @@
         <activity android:name=".CourseInfo" />
         <activity android:name=".AddTeacher" />
         <activity android:name=".AddStudent" />
-        <activity android:name=".AddClass" />
+        <activity android:name=".AddCourse" />
         <activity android:name=".Courses" />
         <activity
             android:name=".SplashActivity"

@@ -36,10 +36,10 @@
         android:layout_below="@+id/username_layout"
         android:layout_margin="10dp"
         android:hint="Password"
-        app:layout_constraintBottom_toTopOf="@+id/rb_manager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username_layout">
+        app:layout_constraintTop_toBottomOf="@+id/username_layout"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_password"
@@ -50,27 +50,42 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+    <RadioGroup
+        android:id="@+id/rg_first"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/password_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rg_second"
+        android:orientation="vertical"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp">
 
         <RadioButton
             android:id="@+id/rb_teacher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Teacher"
-            app:layout_constraintStart_toEndOf="@+id/rb_manager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password_layout"/>
+            />
 
         <RadioButton
             android:id="@+id/rb_manager"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Manager"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_layout"
-            app:layout_constraintEnd_toStartOf="@+id/rb_teacher"/>
+            />
+    </RadioGroup>
 
-
-
+    <RadioGroup
+        android:id="@+id/rg_second"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/password_layout"
+        app:layout_constraintStart_toEndOf="@+id/rg_first"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp">
 
         <RadioButton
             android:id="@+id/rb_parent"
@@ -91,6 +106,13 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
 
+    </RadioGroup>
+
+
+
+
+
+
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
@@ -99,7 +121,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rb_parent" />
+        />
 
 
 

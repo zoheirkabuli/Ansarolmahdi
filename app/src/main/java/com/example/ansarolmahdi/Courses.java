@@ -60,7 +60,7 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
         fabClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Courses.this,AddClass.class);
+                Intent intent = new Intent(Courses.this, AddCourse.class);
                 startActivity(intent);
             }
         });
