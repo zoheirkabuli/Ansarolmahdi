@@ -9,12 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".ClassInfo" />
+        <activity android:name=".SessionActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".CourseInfo" />
         <activity android:name=".AddTeacher" />
         <activity android:name=".AddStudent" />
         <activity android:name=".AddClass" />
-        <activity android:name=".Classes" />
+        <activity android:name=".Courses" />
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">

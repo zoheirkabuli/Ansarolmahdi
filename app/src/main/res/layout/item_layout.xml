@@ -10,14 +10,14 @@
     app:cardBackgroundColor="@color/gray_25"
     >
 
-
-
     <TextView
         android:id="@+id/tv_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Item"
         android:textSize="20sp"
-        android:layout_margin="20dp"/>
+        android:layout_margin="20dp"
+        android:textDirection="rtl"
+        android:fontFamily="@font/iransans"/>
 
 </androidx.cardview.widget.CardView>
