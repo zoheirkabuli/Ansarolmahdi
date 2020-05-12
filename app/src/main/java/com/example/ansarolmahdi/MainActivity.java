@@ -52,67 +52,57 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void checkListener(){
-        rbManager.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        rbManager.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (rbStudent.isChecked()) {
-                    rbStudent.setChecked(false);
-                }
-                if (rbParent.isChecked()){
-                    rbParent.setChecked(false);
-                }
-                if (rbTeacher.isChecked()){
-                    rbTeacher.setChecked(false);
-                }
-
-
+            public void onClick(View view) {
+                updateCheck(rbManager);
             }
         });
 
-        rbTeacher.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        rbTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (rbStudent.isChecked()) {
-                    rbStudent.setChecked(false);
-                }
-                if (rbParent.isChecked()){
-                    rbParent.setChecked(false);
-                }
-                if (rbManager.isChecked()){
-                    rbManager.setChecked(false);
-                }
+            public void onClick(View view) {
+                updateCheck(rbTeacher);
             }
         });
 
-        rbStudent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        rbStudent.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (rbManager.isChecked()) {
-                    rbManager.setChecked(false);
-                }
-                if (rbTeacher.isChecked()){
-                    rbTeacher.setChecked(false);
-                }
-                if (rbParent.isChecked()){
-                    rbParent.setChecked(false);
-                }
+            public void onClick(View view) {
+                updateCheck(rbStudent);
             }
         });
 
-        rbParent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        rbParent.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (rbManager.isChecked()){
-                    rbManager.setChecked(false);
-                }
-                if (rbTeacher.isChecked()){
-                    rbTeacher.setChecked(false);
-                }
-
-                if (rbStudent.isChecked()){
-                    rbStudent.setChecked(false);
-                }
+            public void onClick(View view) {
+                updateCheck(rbParent);
             }
         });
+    }
+
+    public void updateCheck(Button btn){
+        if(btn.getId() == rbManager.getId()){
+            rbManager.setChecked(true);
+            rbTeacher.setChecked(false);
+            rbStudent.setChecked(false);
+            rbParent.setChecked(false);
+        }else if(btn.getId() == rbTeacher.getId()){
+            rbManager.setChecked(false);
+            rbTeacher.setChecked(true);
+            rbStudent.setChecked(false);
+            rbParent.setChecked(false);
+        }else if(btn.getId() == rbStudent.getId()){
+            rbManager.setChecked(false);
+            rbTeacher.setChecked(false);
+            rbStudent.setChecked(true);
+            rbParent.setChecked(false);
+        }else{
+            rbManager.setChecked(false);
+            rbTeacher.setChecked(false);
+            rbStudent.setChecked(false);
+            rbParent.setChecked(true);
+        }
+
     }
 }
