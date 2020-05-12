@@ -37,37 +37,14 @@ public class AddTeacher extends AppCompatActivity {
         selectClasses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                runAlert();
+
             }
         });
 
 
     }
 
-    private void runAlert() {
 
-//        new AlertDialog.Builder(this)
-//                .setTitle("Select")
-//                .setCancelable(false)
-//                .setMultiChoiceItems(items,null,null)
-//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(AddTeacher.this, "Yes Button clicked", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//                .create()
-//                .show();
-
-        ViewGroup viewGroup = findViewById(android.R.id.content);
-
-        new AlertDialog.Builder(this)
-                .setView(LayoutInflater.from(this).inflate(R.layout.info_dialog
-                        ,viewGroup
-                        ,false))
-                .create()
-                .show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

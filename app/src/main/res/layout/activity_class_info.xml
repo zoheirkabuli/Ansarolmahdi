@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".classInfo">
+    tools:context=".ClassInfo">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/ciToolbar"
@@ -54,12 +54,12 @@
         app:layout_constraintTop_toBottomOf="@id/btn_sessions" />
 
     <Button
-        android:id="@+id/btn_attendence"
+        android:id="@+id/btn_attendance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:text="attendence"
+        android:text="attendance"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,6 +75,18 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_attendence" />
+        app:layout_constraintTop_toBottomOf="@id/btn_attendance" />
+
+    <Button
+        android:id="@+id/btn_exam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="Exams"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_homeworks" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
