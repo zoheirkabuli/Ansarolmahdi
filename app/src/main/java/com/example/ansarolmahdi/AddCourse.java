@@ -7,14 +7,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 
-public class AddClass extends AppCompatActivity {
+public class AddCourse extends AppCompatActivity {
 
     private Toolbar cToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_class);
+        setContentView(R.layout.activity_add_course);
 
         cToolbar = findViewById(R.id.cToolbar);
         setSupportActionBar(cToolbar);

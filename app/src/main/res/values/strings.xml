@@ -10,4 +10,5 @@
     <string name="user_pass_necessary">لطفا آدرس ایمیل و رمز عبور را وارد نمایید.</string>
     <string name="request_tag_string">STRING</string>
     <string name="wrong_login">اطلاعات وارد شده اشتباه است، لطفا دوباره تلاش نمایید.</string>
+    <string name="detail_test">متن تستی باید این تکلیف انجام شود تا تاریخ 5 خرداد</string>
 </resources>

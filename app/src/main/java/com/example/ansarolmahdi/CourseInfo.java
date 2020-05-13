@@ -1,38 +1,46 @@
 package com.example.ansarolmahdi;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import java.util.ArrayList;
 
-public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemListener {
+public class CourseInfo extends AppCompatActivity implements MyAdapter.OnItemListener {
 
     private Toolbar ciToolbar;
     private Button info,sessions,students,attendance,homeWorks,exams;
-    private RecyclerView rv_sessions;
+    private RecyclerView rvSessions;
     private MyAdapter myAdapter;
     private ArrayList<String> test = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_class_info);
+        setContentView(R.layout.activity_course_info);
         init();
 
+        addToArray();
+
+        setAdapter();
+
+        toolbarOption();
+
+
+
+    }
+
+    private void toolbarOption() {
+        Intent intent = getIntent();
         setSupportActionBar(ciToolbar);
-        setTitle("Classes");
+        setTitle(intent.getStringExtra("COURSENAME"));
         ciToolbar.setTitleTextColor(Color.WHITE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -43,27 +51,32 @@ public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemList
             }
         });
 
-        info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
 
-            }
-        });
+    private void setAdapter() {
+        myAdapter = new MyAdapter(CourseInfo.this,test,this);
+        rvSessions.setLayoutManager(new LinearLayoutManager(CourseInfo.this));
+        rvSessions.setAdapter(myAdapter);
+    }
 
-        sessions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
+    private void addToArray() {
+        test.add("جلسه اول");
+        test.add("جلسه دوم");
+        test.add("جلسه سوم");
+        test.add("جلسه پنجم");
+        test.add("جلسه ششم");
+        test.add("جلسه هفتم");
+        test.add("جلسه هشتم");
+        test.add("جلسه نهم");
+        test.add("جلسه دهم");
+        test.add("جلسه یازدهم");
     }
 
     public void init(){
-        info = findViewById(R.id.btn_info);
-        sessions = findViewById(R.id.btn_sessions);
+//        info = findViewById(R.id.btn_info);
+//        sessions = findViewById(R.id.btn_sessions);
         ciToolbar = findViewById(R.id.ciToolbar);
-//        rv_sessions = findViewById(R.id.rv_sessions);
+        rvSessions = findViewById(R.id.rv_sessions);
     }
 
 
@@ -96,6 +109,10 @@ public class ClassInfo extends AppCompatActivity implements MyAdapter.OnItemList
 
     @Override
     public void onItemClick(int position) {
+
+        Intent intent = new Intent(CourseInfo.this,SessionActivity.class);
+        intent.putExtra("TESTTEST",test.get(position));
+        startActivity(intent);
 
     }
 }

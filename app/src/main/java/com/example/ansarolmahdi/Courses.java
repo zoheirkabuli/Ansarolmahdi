@@ -15,7 +15,7 @@ import com.github.clans.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class Classes extends AppCompatActivity implements MyAdapter.OnItemListener {
+public class Courses extends AppCompatActivity implements MyAdapter.OnItemListener {
 
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
@@ -27,28 +27,24 @@ public class Classes extends AppCompatActivity implements MyAdapter.OnItemListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_classes);
+        setContentView(R.layout.activity_courses);
 
-        test.add("Test1");
-        test.add("Test2");
-        test.add("Test3");
-        test.add("Test4");
-        test.add("Test5");
+        addToArray();
 
         init();
 
-        myAdapter = new MyAdapter(Classes.this,test,this);
-        recyclerView.setLayoutManager(new LinearLayoutManager(Classes.this));
+        myAdapter = new MyAdapter(Courses.this,test,this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(Courses.this));
         recyclerView.setAdapter(myAdapter);
 
         setSupportActionBar(mToolbar);
-        setTitle("Classes");
+        setTitle("دوره ها");
         mToolbar.setTitleTextColor(Color.WHITE);
 
         fabTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Classes.this,AddTeacher.class);
+                Intent intent = new Intent(Courses.this,AddTeacher.class);
                 startActivity(intent);
             }
         });
@@ -56,7 +52,7 @@ public class Classes extends AppCompatActivity implements MyAdapter.OnItemListen
         fabStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Classes.this,AddStudent.class);
+                Intent intent = new Intent(Courses.this,AddStudent.class);
                 startActivity(intent);
             }
         });
@@ -64,11 +60,24 @@ public class Classes extends AppCompatActivity implements MyAdapter.OnItemListen
         fabClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Classes.this,AddClass.class);
+                Intent intent = new Intent(Courses.this, AddCourse.class);
                 startActivity(intent);
             }
         });
 
+    }
+
+    private void addToArray() {
+        test.add("دوره یک");
+        test.add("دوره دو");
+        test.add("دوره سه");
+        test.add("دوره چهار");
+        test.add("دوره پنج");
+        test.add("دوره شش");
+        test.add("دوره هفت");
+        test.add("دوره هشت");
+        test.add("دوره نه");
+        test.add("دوره ده");
     }
 
     private void init() {
@@ -87,7 +96,8 @@ public class Classes extends AppCompatActivity implements MyAdapter.OnItemListen
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(this, ClassInfo.class);
+        Intent intent = new Intent(this, CourseInfo.class);
+        intent.putExtra("COURSENAME",test.get(position));
         startActivity(intent);
     }
 }

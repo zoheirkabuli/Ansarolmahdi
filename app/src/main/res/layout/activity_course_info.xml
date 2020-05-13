@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/ciToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:titleTextColor="@color/white"
+        android:layoutDirection="rtl"
+        app:navigationIcon="@drawable/ic_arrow_back_24dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/first_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/ciToolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tv_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:text="10:15"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/iransans"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="ساعت :"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:inputType="time"
+            android:fontFamily="@font/iransans"
+            android:paddingEnd="20dp"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/second_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/first_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tv_tuition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:text="1200000 $"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/iransans"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_tuition_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="شهریه :"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:inputType="time"
+            android:fontFamily="@font/iransans"
+            android:paddingEnd="20dp"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/third_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/second_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/tv_exam_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:text="10:15"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/iransans"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_exam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="زمان امتحان :"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:inputType="time"
+            android:fontFamily="@font/iransans"
+            android:paddingEnd="20dp"
+            />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_students"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/third_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="20dp"
+        android:text="دانش آموزان"
+        android:textSize="20sp"
+        android:fontFamily="@font/iransans"
+        android:padding="5dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_sessions"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_students"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
