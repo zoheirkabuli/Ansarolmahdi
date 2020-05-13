@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Ansarolmahdi</string>
+    <string name="url_first">http://</string>
+    <string name="slash">/</string>
+    <string name="php_format">.php</string>
+    <string name="tetabyte">tetabyte.org</string>
+    <string name="ansar">ansar</string>
+    <string name="login">login</string>
+    <string name="yes">yes</string>
+    <string name="user_pass_necessary">لطفا آدرس ایمیل و رمز عبور را وارد نمایید.</string>
+    <string name="request_tag_string">STRING</string>
+    <string name="wrong_login">اطلاعات وارد شده اشتباه است، لطفا دوباره تلاش نمایید.</string>
 </resources>

@@ -1,9 +1,14 @@
 package com.example.ansarolmahdi.classes;
 
 public class Person {
-
-    private int personID,access;
-    private String fName,lName,eMail,phone,password;
+    private int personID;
+    private int access;
+    private String fName;
+    private String lName;
+    private String eMail;
+    private String phone;
+    private String password;
+    private String response;
 
     public Person(String fName, String lName, String eMail, String password) {
         this.fName = fName;
@@ -11,6 +16,7 @@ public class Person {
         this.eMail = eMail;
         this.password = password;
     }
+
 
     public Person() {
     }
@@ -69,5 +75,13 @@ public class Person {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
     }
 }
