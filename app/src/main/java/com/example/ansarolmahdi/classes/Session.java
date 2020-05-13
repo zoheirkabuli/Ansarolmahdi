@@ -1,15 +1,18 @@
 package com.example.ansarolmahdi.classes;
 
+import java.util.ArrayList;
+
 public class Session {
     private int sessionID,courseID,sessionNum;
-    private String weekDay;
-    private Date date;
+    private java.lang.String weekDay;
+    private String string;
+    private ArrayList<String> sessions;
 
-    public Session(int courseID, int sessionNum, String weekDay, Date date) {
+    public Session(int courseID, int sessionNum, java.lang.String weekDay, String string) {
         this.courseID = courseID;
         this.sessionNum = sessionNum;
         this.weekDay = weekDay;
-        this.date = date;
+        this.string = string;
     }
 
     public Session() {
@@ -39,19 +42,27 @@ public class Session {
         this.sessionNum = sessionNum;
     }
 
-    public String getWeekDay() {
+    public java.lang.String getWeekDay() {
         return weekDay;
     }
 
-    public void setWeekDay(String weekDay) {
+    public void setWeekDay(java.lang.String weekDay) {
         this.weekDay = weekDay;
     }
 
-    public Date getDate() {
-        return date;
+    public String getString() {
+        return string;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setString(String string) {
+        this.string = string;
+    }
+
+    public ArrayList<String> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(ArrayList<String> sessions) {
+        this.sessions = sessions;
     }
 }

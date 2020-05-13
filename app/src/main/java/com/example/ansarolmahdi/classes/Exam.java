@@ -1,14 +1,16 @@
 package com.example.ansarolmahdi.classes;
 
+import java.sql.Time;
+
 public class Exam {
     private int examID,courseID;
-    private Date date;
+    private String string;
     private Time time;
-    private String title;
+    private java.lang.String title;
 
-    public Exam(int courseID, Date date, Time time, String title) {
+    public Exam(int courseID, String string, Time time, java.lang.String title) {
         this.courseID = courseID;
-        this.date = date;
+        this.string = string;
         this.time = time;
         this.title = title;
     }
@@ -21,15 +23,15 @@ public class Exam {
         return courseID;
     }
 
-    public Date getDate() {
-        return date;
+    public String getString() {
+        return string;
     }
 
     public Time getTime() {
         return time;
     }
 
-    public String getTitle() {
+    public java.lang.String getTitle() {
         return title;
     }
 }

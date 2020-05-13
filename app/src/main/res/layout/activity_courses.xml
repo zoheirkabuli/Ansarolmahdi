@@ -37,27 +37,20 @@
         app:menu_openDirection="up">
 
         <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/fab_student"
+        android:id="@+id/fab_person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fab_size="mini"
-        app:fab_label="Student"
+        app:fab_label="شخص"
         android:src="@drawable/ic_supervisor_account_black_24dp"/>
 
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_teacher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_size="mini"
-            app:fab_label="Teacher"
-            android:src="@drawable/ic_person_black_24dp"/>
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab_class"
+            android:id="@+id/fab_course"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_size="mini"
-            app:fab_label="Class"
+            app:fab_label="دوره"
             android:src="@drawable/ic_class_black_24dp"/>
 
     </com.github.clans.fab.FloatingActionMenu>

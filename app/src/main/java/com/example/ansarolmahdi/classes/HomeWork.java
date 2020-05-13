@@ -2,10 +2,10 @@ package com.example.ansarolmahdi.classes;
 
 public class HomeWork {
     private int homeworkID,sessionID;
-    private String text;
-    private Date deadline;
+    private java.lang.String text;
+    private String deadline;
 
-    public HomeWork(int sessionID, String text, Date deadline) {
+    public HomeWork(int sessionID, java.lang.String text, String deadline) {
         this.sessionID = sessionID;
         this.text = text;
         this.deadline = deadline;
@@ -30,19 +30,19 @@ public class HomeWork {
         this.sessionID = sessionID;
     }
 
-    public String getText() {
+    public java.lang.String getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(java.lang.String text) {
         this.text = text;
     }
 
-    public Date getDeadline() {
+    public String getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Date deadline) {
+    public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
 }

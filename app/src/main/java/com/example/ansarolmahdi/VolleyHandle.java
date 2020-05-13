@@ -68,7 +68,7 @@ public class VolleyHandle {
     }
 
 
-    public void sendRequest() throws JSONException {
+    public void sendRequest()  {
         mQueue = CustomVolleyRequestQueue.getInstance(mContext.getApplicationContext())
                 .getRequestQueue();
         if(request_tag.equals("OBJECT")){
@@ -88,7 +88,7 @@ public class VolleyHandle {
                     .POST, url,
                     new JSONArray(), resListenerArr, errListener){
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
+                protected Map<String, String> getParams()  {
                     Map<String,String> param = params;
                     return param;
                 }
@@ -102,7 +102,7 @@ public class VolleyHandle {
         }else if(request_tag.equals("STRING")){
             StringRequest jsonRequest = new StringRequest(Request.Method.POST,url,resListenerStr,errListener){
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
+                protected Map<String, String> getParams()  {
                     Map<String,String> param = params;
                     return param;
                 }

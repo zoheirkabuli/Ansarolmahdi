@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddCourse">
+    tools:context=".AddCourse"
+    android:layoutDirection="rtl">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/cToolbar"
@@ -14,7 +15,8 @@
         android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back_24dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/title_layout"
@@ -23,14 +25,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cToolbar"
-        android:hint="Title"
+        android:hint="عنوان دوره"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_margin="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:fontFamily="@font/iransans"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -41,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:hint="Cost"
+        android:hint="شهریه"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_margin="10dp">
 
@@ -49,7 +52,8 @@
             android:id="@+id/et_cost"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:fontFamily="@font/iransans"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cost_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:hint="Number Of Sessions"
+        android:hint="تعداد جلسات"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_margin="10dp">
 
@@ -68,7 +72,8 @@
             android:id="@+id/et_nosessions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:fontFamily="@font/iransans"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,33 +85,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
-        android:text="Select Start Date"
+        android:text="تاریخ شروع"
         android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:fontFamily="@font/iransans"/>
 
     <Button
-        android:id="@+id/btn_workdays"
+        android:id="@+id/btn_weekdays"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/btn_startdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
-        android:text="Select Work Days"
+        android:text="روزهای هفته"
         android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:fontFamily="@font/iransans"/>
 
     <Button
         android:id="@+id/btn_times"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_workdays"
+        app:layout_constraintTop_toBottomOf="@id/btn_weekdays"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
-        android:text="Select Times"
+        android:text="زمان"
         android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:fontFamily="@font/iransans"/>
 
     <Button
         android:id="@+id/btn_selectstudents"
@@ -116,8 +124,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
-        android:text="Select Start Date"
+        android:text="انتخاب دانش آموزان"
         android:textSize="20sp"
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:fontFamily="@font/iransans"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

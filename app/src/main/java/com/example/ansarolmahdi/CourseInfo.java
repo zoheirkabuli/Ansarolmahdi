@@ -1,17 +1,25 @@
 package com.example.ansarolmahdi;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.ansarolmahdi.classes.Course;
 
 import java.util.ArrayList;
+
+import static com.example.ansarolmahdi.Courses.KEY_COURSE;
 
 public class CourseInfo extends AppCompatActivity implements MyAdapter.OnItemListener {
 
@@ -20,6 +28,7 @@ public class CourseInfo extends AppCompatActivity implements MyAdapter.OnItemLis
     private RecyclerView rvSessions;
     private MyAdapter myAdapter;
     private ArrayList<String> test = new ArrayList<>();
+    private Course course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +36,20 @@ public class CourseInfo extends AppCompatActivity implements MyAdapter.OnItemLis
         setContentView(R.layout.activity_course_info);
         init();
 
+        intentHandler();
+
         addToArray();
 
         setAdapter();
 
         toolbarOption();
 
-
-
     }
 
     private void toolbarOption() {
-        Intent intent = getIntent();
+
         setSupportActionBar(ciToolbar);
-        setTitle(intent.getStringExtra("COURSENAME"));
+        setTitle(course.getTitle());
         ciToolbar.setTitleTextColor(Color.WHITE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -73,37 +82,15 @@ public class CourseInfo extends AppCompatActivity implements MyAdapter.OnItemLis
     }
 
     public void init(){
-//        info = findViewById(R.id.btn_info);
-//        sessions = findViewById(R.id.btn_sessions);
         ciToolbar = findViewById(R.id.ciToolbar);
         rvSessions = findViewById(R.id.rv_sessions);
     }
 
+    private void intentHandler(){
 
-    private void runAlert() {
-
-//        new AlertDialog.Builder(this)
-//                .setTitle("Select")
-//                .setCancelable(false)
-//                .setMultiChoiceItems(items,null,null)
-//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        Toast.makeText(AddTeacher.this, "Yes Button clicked", Toast.LENGTH_SHORT).show();
-//                    }
-//                })
-//                .create()
-//                .show();
-
-//        ViewGroup viewGroup = findViewById(android.R.id.content);
-//
-//
-//        new AlertDialog.Builder(this)
-//                .setView(LayoutInflater.from(this).inflate(R.layout.info_dialog
-//                        ,viewGroup
-//                        ,false))
-//                .create()
-//                .show();
+        Bundle intent = getIntent().getExtras();
+        course = new Course();
+        course = intent.getParcelable(KEY_COURSE);
 
     }
 

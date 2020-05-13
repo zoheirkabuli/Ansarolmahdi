@@ -1,12 +1,19 @@
 package com.example.ansarolmahdi.classes;
 
-public class Course {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.sql.Time;
+
+public class Course implements Parcelable {
     private int courseID,userID,numberOfSessions,cost;
     private String title;
-    private Date startDate;
+    private String startDate;
     private Time time;
 
-    public Course(int userID, int numberOfSessions, int cost, String title, Date startDate, Time time) {
+
+
+    public Course(int userID, int numberOfSessions, int cost, java.lang.String title, String startDate,Time time) {
         this.userID = userID;
         this.numberOfSessions = numberOfSessions;
         this.cost = cost;
@@ -15,12 +22,31 @@ public class Course {
         this.time = time;
     }
 
+
     public Course() {
     }
 
-    public int getCourseID() {
-        return courseID;
+
+    protected Course(Parcel in) {
+        courseID = in.readInt();
+        userID = in.readInt();
+        numberOfSessions = in.readInt();
+        cost = in.readInt();
+        title = in.readString();
+        startDate = in.readString();
     }
+
+    public static final Creator<Course> CREATOR = new Creator<Course>() {
+        @Override
+        public Course createFromParcel(Parcel in) {
+            return new Course(in);
+        }
+
+        @Override
+        public Course[] newArray(int size) {
+            return new Course[size];
+        }
+    };
 
     public void setCourseID(int courseID) {
         this.courseID = courseID;
@@ -50,27 +76,46 @@ public class Course {
         this.cost = cost;
     }
 
-    public String getTitle() {
+    public java.lang.String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(java.lang.String title) {
         this.title = title;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Time getTime() {
-        return time;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(courseID);
+        parcel.writeInt(userID);
+        parcel.writeInt(numberOfSessions);
+        parcel.writeInt(cost);
+        parcel.writeString(title);
+        parcel.writeString(startDate);
     }
+
+//    public Time getTime() {
+//        return time;
+//    }
+//
+//    public void setTime(Time time) {
+//        this.time = time;
+//    }
+
+
+
+
 }

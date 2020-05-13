@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.example.ansarolmahdi.classes.SharedPrefManager;
 import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,10 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
-            finish();
-            startActivity(new Intent(this, Courses.class));
-        }
+
         checkListener();
         postAction();
         login.setOnClickListener(new View.OnClickListener() {
@@ -145,11 +141,7 @@ public class MainActivity extends AppCompatActivity {
             final VolleyHandle vh = new VolleyHandle(url.getURL(),
                     getString(R.string.request_tag_string),MainActivity.this,
                     resListener,errorListener,map);
-            try {
-                vh.sendRequest();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            vh.sendRequest();
         }
     }
     public void postAction(){
@@ -157,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
+                    Log.d("response",response.toString());
                     progressDialog.dismiss();
                     resJsonObject = new JSONObject(response);
                     res = resJsonObject.getString("response");
@@ -174,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.d("response",error.getMessage());
             }
         };
     }
