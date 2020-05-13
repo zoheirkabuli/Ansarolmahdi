@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         init();
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
-            startActivity(new Intent(this, Classes.class));
+            startActivity(new Intent(this, Courses.class));
         }
         checkListener();
         postAction();
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
     private void login(){
-        Intent intent = new Intent(MainActivity.this,Classes.class);
+        Intent intent = new Intent(MainActivity.this,Courses.class);
         startActivity(intent);
         finish();
     }
