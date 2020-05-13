@@ -19,14 +19,20 @@ import android.widget.Toast;
 import com.example.ansarolmahdi.classes.MyDate;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class AddCourse extends AppCompatActivity {
 
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat ("yyyy_MM_dd");
 
     private MyDate startDate;
+    private String[] nameOfDays;
+    private boolean[] checkedNameOfDays;
+    private ArrayList<String> checkedDays = new ArrayList<>();
 
     private Toolbar cToolbar;
     private Button selectStartDate,weekDays;
@@ -99,12 +105,27 @@ public class AddCourse extends AppCompatActivity {
 
     private void runAlert() {
 
-        String[] nameOfDays = getResources().getStringArray(R.array.name_of_days);
+        nameOfDays = getResources().getStringArray(R.array.name_of_days);
+        checkedNameOfDays =new boolean[] {false,false,false,false,false,false,false};
+        final List<String> nameOfDaysList = Arrays.asList(nameOfDays);
+
 
         new AlertDialog.Builder(this)
                 .setTitle(getString(R.string.week_days))
                 .setCancelable(false)
-                .setMultiChoiceItems(nameOfDays,null,null)
+                .setMultiChoiceItems(nameOfDays, checkedNameOfDays, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which, boolean isChecked) {
+
+                        checkedNameOfDays[which] = isChecked;
+
+                        String currentItem = nameOfDaysList.get(which);
+
+                        Toast.makeText(AddCourse.this, currentItem + " " + isChecked, Toast.LENGTH_LONG).show();
+
+
+                    }
+                })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -114,7 +135,14 @@ public class AddCourse extends AppCompatActivity {
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(AddCourse.this, "Yes Button clicked", Toast.LENGTH_SHORT).show();
+                        for (int j = 0; j < checkedNameOfDays.length; j++) {
+
+                            if (checkedNameOfDays[j]){
+                                checkedDays.add(nameOfDays[j]);
+                            }
+
+                        }
+                        Toast.makeText(AddCourse.this, "size is : " + checkedDays.size(), Toast.LENGTH_SHORT).show();
                     }
                 })
                 .create()
