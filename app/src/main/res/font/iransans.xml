@@ -5,31 +5,31 @@
 
 
     <font
-        android:font="@font/iransans_ultralight"
+        android:font="@font/iransansmobilefanum_ultralight"
         android:fontStyle="normal"
         android:fontWeight="200"
         tools:ignore="ResourceCycle" />
 
     <font
-        android:font="@font/iransans_light"
+        android:font="@font/iransansmobilefanum_light"
         android:fontStyle="normal"
         android:fontWeight="300"
         tools:ignore="ResourceCycle" />
 
     <font
-        android:font="@font/iransans"
+        android:font="@font/iransansmobilefanum"
         android:fontStyle="normal"
         android:fontWeight="400"
         tools:ignore="ResourceCycle" />
 
     <font
-        android:font="@font/iransans_medium"
+        android:font="@font/iransansmobilefanum_medium"
         android:fontStyle="normal"
         android:fontWeight="500"
         tools:ignore="ResourceCycle" />
 
     <font
-        android:font="@font/iransans_bold"
+        android:font="@font/iransansmobilefanum_bold"
         android:fontStyle="normal"
         android:fontWeight="700"
         tools:ignore="ResourceCycle" />

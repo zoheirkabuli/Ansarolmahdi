@@ -1,22 +1,45 @@
 package com.example.ansarolmahdi.classes;
 
-import java.util.ArrayList;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Session {
+
+public class Session implements Parcelable {
     private int sessionID,courseID,sessionNum;
     private String weekDay;
-    private String string;
-    private ArrayList<String> sessions;
+    private String sessionDate;
 
-    public Session(int courseID, int sessionNum, java.lang.String weekDay, String string) {
+    public Session(int sessionID, int courseID, int sessionNum, String weekDay, String sessionDate) {
+        this.sessionID = sessionID;
         this.courseID = courseID;
         this.sessionNum = sessionNum;
         this.weekDay = weekDay;
-        this.string = string;
+        this.sessionDate = sessionDate;
     }
 
     public Session() {
+
     }
+
+    protected Session(Parcel in) {
+        sessionID = in.readInt();
+        courseID = in.readInt();
+        sessionNum = in.readInt();
+        weekDay = in.readString();
+        sessionDate = in.readString();
+    }
+
+    public static final Creator<Session> CREATOR = new Creator<Session>() {
+        @Override
+        public Session createFromParcel(Parcel in) {
+            return new Session(in);
+        }
+
+        @Override
+        public Session[] newArray(int size) {
+            return new Session[size];
+        }
+    };
 
     public int getSessionID() {
         return sessionID;
@@ -42,27 +65,33 @@ public class Session {
         this.sessionNum = sessionNum;
     }
 
-    public java.lang.String getWeekDay() {
+    public String getWeekDay() {
         return weekDay;
     }
 
-    public void setWeekDay(java.lang.String weekDay) {
+    public void setWeekDay(String weekDay) {
         this.weekDay = weekDay;
     }
 
-    public String getString() {
-        return string;
+    public String getSessionDate() {
+        return sessionDate;
     }
 
-    public void setString(String string) {
-        this.string = string;
+    public void setSessionDate(String sessionDate) {
+        this.sessionDate = sessionDate;
     }
 
-    public ArrayList<String> getSessions() {
-        return sessions;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setSessions(ArrayList<String> sessions) {
-        this.sessions = sessions;
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(sessionID);
+        parcel.writeInt(courseID);
+        parcel.writeInt(sessionNum);
+        parcel.writeString(weekDay);
+        parcel.writeString(sessionDate);
     }
 }

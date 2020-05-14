@@ -33,7 +33,7 @@ import static com.example.ansarolmahdi.AddCourse.DATE_FORMAT;
 
 public class Courses extends AppCompatActivity implements MyAdapter.OnItemListener {
 
-    public static String KEY_COURSE = "COURSENAME";
+    public static final String KEY_COURSE = "COURSENAME";
 
     private Response.Listener<String> resListener;
     private Response.ErrorListener errorListener;

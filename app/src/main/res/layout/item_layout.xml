@@ -8,6 +8,8 @@
     android:elevation="10dp"
     android:layout_margin="10dp"
     app:cardBackgroundColor="@color/gray_25"
+    android:textDirection="rtl"
+    android:layoutDirection="rtl"
     >
 
     <TextView
@@ -18,6 +20,8 @@
         android:textSize="20sp"
         android:layout_margin="20dp"
         android:textDirection="rtl"
-        android:fontFamily="@font/iransans"/>
+        android:fontFamily="@font/iransans"
+        android:layout_gravity="center"
+        android:gravity="center"/>
 
 </androidx.cardview.widget.CardView>
