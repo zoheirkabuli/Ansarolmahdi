@@ -6,13 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".CourseStudent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/csToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:titleTextColor="@color/white"
+        android:layoutDirection="rtl"
+        app:navigationIcon="@drawable/ic_arrow_back_24dp"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_course_student"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/csToolbar"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add_24dp"

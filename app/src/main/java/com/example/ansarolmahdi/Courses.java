@@ -136,11 +136,17 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
                         crs.setStartDate(temp.getString("startdate"));
                         crs.setCourseID(temp.getInt("courseid"));
                         crs.setTime(temp.getString("time"));
-                        if (temp.getString("examtime") == "no"
-                        && temp.getString("examdate") == "no"){
+                        if (temp.getString("examtime").equals("no")
+                        && temp.getString("examdate").equals("no")){
                             crs.setExamTime("ندارد");
                             crs.setExamDate("ندارد");
-                        }else{
+                        }else if (temp.getString("examtime").equals("no")){
+                            crs.setExamTime("ندارد");
+                            crs.setExamDate(temp.getString("examdate"));
+                        }else if (temp.getString("examdate").equals("no")){
+                            crs.setExamTime(temp.getString("examtime"));
+                            crs.setExamDate("نداد");
+                        }else {
                             crs.setExamTime(temp.getString("examtime"));
                             crs.setExamDate(temp.getString("examdate"));
                         }

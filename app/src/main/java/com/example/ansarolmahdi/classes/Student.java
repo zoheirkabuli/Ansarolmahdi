@@ -8,6 +8,9 @@ public class Student extends Person {
         this.parentID = parentID;
     }
 
+    public Student() {
+    }
+
     public int getStudentID() {
         return studentID;
     }
