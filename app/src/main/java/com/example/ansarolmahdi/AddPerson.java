@@ -104,6 +104,7 @@ public class AddPerson extends AppCompatActivity {
                 map.put("password",password);
                 map.put("role",roleID+"");
                 map.put("phone",phone);
+                Log.d("TAGTAG",firstName+","+lastName+","+email+","+password+","+roleID+","+phone);
 
                 final VolleyHandle vh = new VolleyHandle(url.getURL(),
                         getString(R.string.request_tag_string),AddPerson.this,
@@ -120,6 +121,7 @@ public class AddPerson extends AppCompatActivity {
         resListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("TAGTAG",response.toString());
                 try {
                     Log.d("responseAdd",response.toString());
                     progressDialog.dismiss();
@@ -128,6 +130,7 @@ public class AddPerson extends AppCompatActivity {
                     Log.d("responseAdd",res);
                     if(res.equals(getString(R.string.yes))){
                         toaster("شخص اضافه شد");
+
                     }else{
                         toaster(getString(R.string.wrong_login));
                         res = resJsonObject.getString("msg");

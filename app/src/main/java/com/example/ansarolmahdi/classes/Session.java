@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Session {
     private int sessionID,courseID,sessionNum;
-    private java.lang.String weekDay;
+    private String weekDay;
     private String string;
     private ArrayList<String> sessions;
 

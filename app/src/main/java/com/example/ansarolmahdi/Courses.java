@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
     private ArrayList<Course> courses;
     private ArrayList<String> titles;
 
+    private ProgressDialog progressDialog;
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
     private FloatingActionButton fabPerson,fabCourse;
@@ -89,7 +91,10 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
         fabCourse = findViewById(R.id.fab_course);
         fabPerson = findViewById(R.id.fab_person);
         mToolbar = findViewById(R.id.tb_classes);
+        progressDialog = new ProgressDialog(this);
 
+        progressDialog.setMessage(getString(R.string.wait));
+        progressDialog.show();
         url = new URLMaker(getString(R.string.tetabyte),getString(R.string.ansar),
                 getString(R.string.courses),this);
         map = new HashMap<>();
@@ -112,8 +117,9 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
         resListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-//                Log.d("responseCourses",response.toString());
+                Log.d("TAGTAG",response.toString());
                 try {
+                    progressDialog.dismiss();
                     courses = new ArrayList<>();
 
                     JSONObject obj = new JSONObject(response);
@@ -126,6 +132,8 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
                         crs.setCost(temp.getInt("cost"));
                         crs.setNumberOfSessions(temp.getInt("numofsessions"));
                         crs.setStartDate(temp.getString("startdate"));
+                        crs.setCourseID(temp.getInt("courseid"));
+                        crs.setTime(temp.getString("time"));
                         courses.add(crs);
                         titles.add(crs.getTitle());
                     }
@@ -141,7 +149,7 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
         errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("response",error.getMessage());
+//                Log.d("response",error.getMessage());
             }
         };
     }
@@ -155,7 +163,7 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
 
     @Override
     public void onItemClick(int position) {
-        Intent intent = new Intent(Courses.this, CourseInfo.class);
+        Intent intent = new Intent(Courses.this, DetailCourse.class);
         intent.putExtra(KEY_COURSE,courses.get(position));
         startActivity(intent);
     }

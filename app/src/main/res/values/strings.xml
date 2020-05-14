@@ -7,8 +7,12 @@
     <string name="ansar">ansar</string>
     <string name="login">login</string>
     <string name="signup">signup</string>
+    <string name="addcourse">addcourse</string>
     <string name="courses">courses</string>
+    <string name="teachers">teachers</string>
+    <string name="coursesessions">coursesessions</string>
     <string name="yes">yes</string>
+    <string name="wait">لطفا صبر کنید...</string>
     <string name="user_pass_necessary">لطفا آدرس ایمیل و رمز عبور را وارد نمایید.</string>
     <string name="request_tag_string">STRING</string>
     <string name="wrong_login">اطلاعات وارد شده اشتباه است، لطفا دوباره تلاش نمایید.</string>
@@ -16,6 +20,7 @@
     <string name="add_person_successful">شخص اضافه شد</string>
     <string name="add_person_unsuccessful">افزودن با مشکل مواجه شد. دوباره تلاش کنید</string>
     <string name="week_days">روزهای هفته</string>
+    <string name="add_course">اضافه کردن دوره</string>
     <string-array name="name_of_days">
         <item>شنبه</item>
         <item>یکشنبه</item>

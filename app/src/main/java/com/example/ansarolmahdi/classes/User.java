@@ -8,6 +8,10 @@ public class User extends Person {
         this.roleID = roleID;
     }
 
+    public User(){
+
+    }
+
     public int getUserID() {
         return userID;
     }

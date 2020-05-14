@@ -16,7 +16,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:navigationIcon="@drawable/ic_arrow_back_24dp"/>
+        app:navigationIcon="@drawable/ic_arrow_back_24dp"
+        android:elevation="5dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/title_layout"
@@ -79,10 +80,10 @@
 
     <Button
         android:id="@+id/btn_startdate"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/nofsession_layout"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_weekdays"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
         android:text="تاریخ شروع"
@@ -92,11 +93,11 @@
 
     <Button
         android:id="@+id/btn_weekdays"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_startdate"
+        app:layout_constraintTop_toBottomOf="@id/nofsession_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_startdate"
         android:layout_margin="10dp"
         android:text="روزهای هفته"
         android:textSize="20sp"
@@ -105,9 +106,9 @@
 
     <Button
         android:id="@+id/btn_times"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_weekdays"
+        app:layout_constraintTop_toBottomOf="@id/btn_startdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="10dp"
@@ -116,17 +117,40 @@
         android:padding="10dp"
         android:fontFamily="@font/iransans"/>
 
-    <Button
-        android:id="@+id/btn_selectstudents"
+
+
+
+
+    <Spinner
+        android:id="@+id/spinner_selectteacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/btn_times"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/iransans"
+        android:textDirection="rtl"
+        />
+
+
+    <Button
+        android:id="@+id/btn_addcourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="10dp"
-        android:text="انتخاب دانش آموزان"
+        android:text="اضافه کردن"
         android:textSize="20sp"
         android:padding="10dp"
         android:fontFamily="@font/iransans"/>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

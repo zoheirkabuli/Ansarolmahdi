@@ -4,22 +4,25 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.sql.Time;
+import java.util.ArrayList;
 
 public class Course implements Parcelable {
     private int courseID,userID,numberOfSessions,cost;
     private String title;
-    private String startDate;
-    private Time time;
+    private String startDate,time;
+    private ArrayList<Session> sessions;
 
 
 
-    public Course(int userID, int numberOfSessions, int cost, java.lang.String title, String startDate,Time time) {
+    public Course(int userID, int numberOfSessions, int cost, java.lang.String title, String startDate,String time,
+                  ArrayList<Session> sessions) {
         this.userID = userID;
         this.numberOfSessions = numberOfSessions;
         this.cost = cost;
         this.title = title;
         this.startDate = startDate;
         this.time = time;
+        this.sessions = sessions;
     }
 
 
@@ -34,6 +37,8 @@ public class Course implements Parcelable {
         cost = in.readInt();
         title = in.readString();
         startDate = in.readString();
+        time = in.readString();
+        this.sessions = in.readArrayList(null);
     }
 
     public static final Creator<Course> CREATOR = new Creator<Course>() {
@@ -76,7 +81,7 @@ public class Course implements Parcelable {
         this.cost = cost;
     }
 
-    public java.lang.String getTitle() {
+    public String getTitle() {
         return title;
     }
 
@@ -92,6 +97,28 @@ public class Course implements Parcelable {
         this.startDate = startDate;
     }
 
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public ArrayList<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -105,17 +132,7 @@ public class Course implements Parcelable {
         parcel.writeInt(cost);
         parcel.writeString(title);
         parcel.writeString(startDate);
+        parcel.writeString(time);
+        parcel.writeList(sessions);
     }
-
-//    public Time getTime() {
-//        return time;
-//    }
-//
-//    public void setTime(Time time) {
-//        this.time = time;
-//    }
-
-
-
-
 }

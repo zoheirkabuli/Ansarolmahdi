@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
     private void attemptLogin() {
 
         if(et_email.length()==0 || et_pass.length()==0){
-            toaster(getString(R.string.user_pass_necessary));
+            toast(getString(R.string.user_pass_necessary));
         }else{
             progressDialog.show();
             String useremail=et_email.getText().toString();
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
                     if(res.equals(getString(R.string.yes))){
                         login();
                     }else{
-                        toaster(getString(R.string.wrong_login));
+                        toast(getString(R.string.wrong_login));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-    public void toaster(String msg){
+    public void toast(String msg){
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
     }
 }
