@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddCourse"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    style="@style/AppTheme">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/cToolbar"
@@ -33,8 +34,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/iransans"/>
+            android:layout_height="match_parent" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="number"
-            android:fontFamily="@font/iransans"/>
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="number"
-            android:fontFamily="@font/iransans"/>
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,7 +89,7 @@
         android:text="تاریخ شروع"
         android:textSize="20sp"
         android:padding="10dp"
-        android:fontFamily="@font/iransans"/>
+        />
 
     <Button
         android:id="@+id/btn_weekdays"
@@ -102,7 +102,7 @@
         android:text="روزهای هفته"
         android:textSize="20sp"
         android:padding="10dp"
-        android:fontFamily="@font/iransans"/>
+        />
 
     <Button
         android:id="@+id/btn_times"
@@ -115,23 +115,46 @@
         android:text="زمان"
         android:textSize="20sp"
         android:padding="10dp"
-        android:fontFamily="@font/iransans"/>
+        />
 
 
+    <Button
+        android:id="@+id/btn_exam_times"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_times"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_exam_date"
+        android:layout_margin="10dp"
+        android:text="زمان امتحان"
+        android:textSize="20sp"
+        android:padding="10dp"
+        />
 
+    <Button
+        android:id="@+id/btn_exam_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_times"
+        app:layout_constraintEnd_toStartOf="@id/btn_exam_times"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="10dp"
+        android:text="تاریخ امتحان"
+        android:textSize="20sp"
+        android:padding="10dp"
+        />
 
 
     <Spinner
         android:id="@+id/spinner_selectteacher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/btn_times"
+        app:layout_constraintTop_toBottomOf="@id/btn_exam_date"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="10dp"
         android:padding="10dp"
         android:textSize="20sp"
-        android:fontFamily="@font/iransans"
         android:textDirection="rtl"
         />
 
@@ -147,7 +170,7 @@
         android:text="اضافه کردن"
         android:textSize="20sp"
         android:padding="10dp"
-        android:fontFamily="@font/iransans"/>
+        />
 
 
 

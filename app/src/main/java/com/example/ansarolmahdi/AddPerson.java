@@ -4,10 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -22,6 +22,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class AddPerson extends AppCompatActivity {
 
@@ -86,7 +88,7 @@ public class AddPerson extends AppCompatActivity {
 
         if(fName.length() == 0 || lName.length() == 0 || mEmail.length() == 0 || mPassword.length() == 0
         || cPassword.length() == 0 || intRole() == 0){
-            toaster("تمامی فیلدها اجباری هستند");
+            toast("تمامی فیلدها اجباری هستند");
         }else{
             if (mPassword.getText().toString().equals(cPassword.getText().toString())){
 
@@ -129,10 +131,10 @@ public class AddPerson extends AppCompatActivity {
                     res = resJsonObject.getString("response");
                     Log.d("responseAdd",res);
                     if(res.equals(getString(R.string.yes))){
-                        toaster("شخص اضافه شد");
+                        toast("شخص اضافه شد");
 
                     }else{
-                        toaster(getString(R.string.wrong_login));
+                        toast(getString(R.string.wrong_login));
                         res = resJsonObject.getString("msg");
                         Log.d("responseAdd",res);
                     }
@@ -145,12 +147,12 @@ public class AddPerson extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d("response",error.getMessage());
-                toaster(getString(R.string.add_person_unsuccessful));
+                toast(getString(R.string.add_person_unsuccessful));
             }
         };
     }
 
-    private void toaster(String string) {
+    private void toast(String string) {
         Toast.makeText(this, string, Toast.LENGTH_LONG).show();
     }
 
@@ -209,23 +211,18 @@ public class AddPerson extends AppCompatActivity {
 
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
-//        return true;
-//    }
 
     private void toolbarDo(){
 
         setSupportActionBar(apToolbar);
         setTitle("اضافه کردن شخص");
         apToolbar.setTitleTextColor(Color.WHITE);
-//        apToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
+        apToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 
@@ -241,5 +238,10 @@ public class AddPerson extends AppCompatActivity {
         }
 
         return 0;
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

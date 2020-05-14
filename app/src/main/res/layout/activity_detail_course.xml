@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/ciToolbar"
+        android:id="@+id/dcToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
@@ -22,7 +22,7 @@
         android:id="@+id/first_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/ciToolbar"
+        app:layout_constraintTop_toBottomOf="@+id/dcToolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="horizontal"
@@ -35,10 +35,8 @@
             android:padding="10dp"
             android:paddingStart="20dp"
             android:text="10:15"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_weight="1"
-            android:fontFamily="@font/iransans"
-
             />
 
 
@@ -48,10 +46,9 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="ساعت :"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_weight="1"
             android:inputType="time"
-            android:fontFamily="@font/iransans"
             android:paddingEnd="20dp"
             />
 
@@ -75,10 +72,8 @@
             android:padding="10dp"
             android:paddingStart="20dp"
             android:text="1200000 $"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_weight="1"
-            android:fontFamily="@font/iransans"
-
             />
 
 
@@ -88,10 +83,9 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="شهریه :"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_weight="1"
             android:inputType="time"
-            android:fontFamily="@font/iransans"
             android:paddingEnd="20dp"
             />
 
@@ -109,16 +103,52 @@
         >
 
         <TextView
+            android:id="@+id/tv_exam_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:text="1399/12/11"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_exam_date_d"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="تاریخ امتحان :"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:inputType="time"
+            android:paddingEnd="20dp"
+            />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/first_extra_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/third_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        >
+
+        <TextView
             android:id="@+id/tv_exam_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:paddingStart="20dp"
             android:text="10:15"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_weight="1"
-            android:fontFamily="@font/iransans"
-
             />
 
 
@@ -128,28 +158,38 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="زمان امتحان :"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_weight="1"
             android:inputType="time"
-            android:fontFamily="@font/iransans"
             android:paddingEnd="20dp"
             />
 
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_weekdays"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/first_extra_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:textSize="15sp"
+        android:padding="10dp"
+        />
+
 
     <Button
         android:id="@+id/btn_students"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/third_layout"
+        app:layout_constraintTop_toBottomOf="@+id/tv_weekdays"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:text="دانش آموزان"
         android:textSize="20sp"
-        android:fontFamily="@font/iransans"
         android:padding="5dp"/>
 
     <androidx.recyclerview.widget.RecyclerView

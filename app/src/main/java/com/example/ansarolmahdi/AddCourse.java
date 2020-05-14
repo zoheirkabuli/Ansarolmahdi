@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -42,6 +43,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener{
 
     private Response.Listener<String> resListener;
@@ -50,18 +53,18 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
     private Map<String,String> map;
     private JSONObject resJsonObject;
     private String res;
-    private static int roleID;
     private ProgressDialog progressDialog;
 
     public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat ("yyyy-MM-dd");
 
     private TextInputEditText mTitle,mTuition,mNomOfSessions;
-    private Button btnSelectStartDate,btnWeekDays,btnTime,addCourse;
+    private Button btnSelectStartDate,btnWeekDays,btnTime,addCourse,btnExamDate,btnExamTime;
     private Spinner spinnerSelectTeacher;
 
+    private MyDate examDate;
     private MyDate startDate;
     private ArrayList<String> checkedDays = new ArrayList<>();
-    private String timeDays;
+    private String timeDays,examTime;
     private String selectedTeacher;
     private boolean[] selectedDays;
 
@@ -72,6 +75,7 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
 
     private Toolbar cToolbar;
     private DatePickerDialog.OnDateSetListener onDateSetListener;
+    private DatePickerDialog.OnDateSetListener mOnDateSetListener;
 
     private String[] teachersName;
     private ArrayList<Teacher> mTeachers;
@@ -90,6 +94,10 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
 
         datePickerHandler();
 
+        examDatePicker();
+
+        examTimePicker();
+
         weekDaysHandler();
 
         timePickerHandler();
@@ -107,6 +115,72 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
 
     }
 
+    private void examTimePicker() {
+        btnExamTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar c = Calendar.getInstance();
+                 int mHour = c.get(Calendar.HOUR_OF_DAY);
+                 int mMinute = c.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(AddCourse.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+
+                            @Override
+                            public void onTimeSet(TimePicker view, int hourOfDay,
+                                                  int minute) {
+
+                                if (hourOfDay < 10 && minute < 10){
+                                    examTime = "0"+hourOfDay+":"+"0"+minute+":00";
+                                }else if (hourOfDay < 10){
+                                    examTime = "0"+hourOfDay+":"+minute+":00";
+                                }else if (minute < 10){
+                                    examTime = hourOfDay+":"+"0"+minute+":00";
+                                }else {
+                                    examTime = hourOfDay+":"+minute+":00";
+                                }
+
+                            }
+                        }, mHour, mMinute, android.text.format.DateFormat.is24HourFormat(AddCourse.this));
+                timePickerDialog.show();
+            }
+        });
+    }
+
+    private void examDatePicker() {
+        btnExamDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar mCal = Calendar.getInstance();
+                int mYear,mMonth,mDay;
+                mYear = mCal.get(Calendar.YEAR);
+                mMonth = mCal.get(Calendar.MONTH);
+                mDay = mCal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog mDatePickerDialog = new DatePickerDialog(AddCourse.this,
+                        android.R.style.Theme_DeviceDefault_Light_Dialog_NoActionBar,
+                        mOnDateSetListener,
+                        mYear,mMonth,mDay);
+                mDatePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                mDatePickerDialog.show();
+                mDatePickerDialog.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK);
+                mDatePickerDialog.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK);
+            }
+        });
+
+        mOnDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int motnth, int day) {
+                examDate = new MyDate();
+                examDate.setYear(year);
+                examDate.setMonth(motnth);
+                examDate.setDate(day);
+            }
+        };
+
+
+    }
+
     private void spinnerHandler() {
         ArrayAdapter<String> teacherNameAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, teachersName);
         teacherNameAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -118,7 +192,6 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedTeacher = mTeachers.get(spinnerSelectTeacher.getSelectedItemPosition()).geteMail();
                 if (selectedTeacher.equals("استاد را انتخاب کنید")){
-                    Log.d("TAGTAG", "onItemSelected: " + "استاد را انتخاب کنید");;
                     toast("استاد را انتخاب کنید");
                 }
             }
@@ -159,6 +232,8 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
         spinnerSelectTeacher = findViewById(R.id.spinner_selectteacher);
         btnSelectStartDate = findViewById(R.id.btn_startdate);
         btnWeekDays = findViewById(R.id.btn_weekdays);
+        btnExamDate = findViewById(R.id.btn_exam_date);
+        btnExamTime = findViewById(R.id.btn_exam_times);
 
         mTitle = findViewById(R.id.et_title);
         mNomOfSessions = findViewById(R.id.et_nosessions);
@@ -200,8 +275,6 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
                 startDate.setYear(year);
                 startDate.setMonth(motnth);
                 startDate.setDate(day);
-
-                Log.d("TAGTAG", "onCreate: " + motnth + "Current Date: " +  DATE_FORMAT.format(startDate));
             }
         };
     }
@@ -228,8 +301,6 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
         }else {
             timeDays = hour+":"+minute+":00";
         }
-
-        Log.d("TAGTAG", "onTimeSet: " + timeDays);
     }
 
     private void runAlert() {
@@ -250,7 +321,6 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
 
                         String currentItem = nameOfDaysList.get(which);
 
-                        Log.d("TAGTAG", "onClick: " + currentItem + " " + isChecked);
 
 
                     }
@@ -269,7 +339,6 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
 
                             if (checkedNameOfDays[j]){
                                 selectedDays[j] = checkedNameOfDays[j];
-                                Log.d("TAGTAG", "onClick: " + "size is : "  + j + selectedDays[j]);
                             }
                         }
 
@@ -281,8 +350,8 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
 
     }
 
-    public void toast(String msg){
-        Toast.makeText(AddCourse.this, msg, Toast.LENGTH_LONG).show();
+    private void toast(String string) {
+        Toast.makeText(this, string, Toast.LENGTH_LONG).show();
     }
 
     private void attemptTeachers() {
@@ -297,17 +366,18 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
 
         if(mTitle.length() == 0 || mTuition.length() == 0 || mNomOfSessions.length() == 0 || startDate == null
                 ||  timeDays.length() == 0 || selectedTeacher.length() == 0
-                || !noneSelected(selectedDays)){
+                || !noneSelected(selectedDays) || examTime.length() == 0 || examDate == null){
             toast("تمامی فیلدها اجباری هستند");
         }else{
 
-
+                progressDialog.setMessage(getString(R.string.wait));
                 progressDialog.show();
                 String title = mTitle.getText().toString();
                 String tuition = mTuition.getText().toString();
                 String nomOfSessions = mNomOfSessions.getText().toString();
                 String teacherEmail = selectedTeacher;
 
+            Log.d("TAGTAG", "attemptAddCourse: " + tuition);
 
                 map.put("title",title);
                 map.put("cost",tuition);
@@ -315,6 +385,8 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
                 map.put("teacheremail",teacherEmail);
                 map.put("first",DATE_FORMAT.format(startDate));
                 map.put("time",timeDays);
+                map.put("examdate",DATE_FORMAT.format(examDate));
+                map.put("examtime",examTime);
                 map.put("sat",booleanToInt(selectedDays[0])+"");
                 map.put("sun",booleanToInt(selectedDays[1])+"");
                 map.put("mon",booleanToInt(selectedDays[2])+"");
@@ -337,7 +409,7 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
         resListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("response",response.toString());
+
                 try {
                     mTeachers = new ArrayList<>();
                     JSONObject obj = new JSONObject(response);
@@ -353,8 +425,6 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
                         mTeachers.add(teacher);
                     }
 
-                    Log.d("TAGTAG", "onResponse: " + mTeachers.get(0).geteMail());
-
                     teachersName = new String[mTeachers.size()];
 
                     for (int i = 0; i < mTeachers.size(); i++) {
@@ -363,7 +433,6 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
 
                     }
                     spinnerHandler();
-                    Log.d("TAGTAG", "onResponse: " + teachersName[0]);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -384,17 +453,15 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
             @Override
             public void onResponse(String response) {
                 try {
-                    Log.d("responseAdd",response.toString());
+
                     progressDialog.dismiss();
                     resJsonObject = new JSONObject(response);
                     res = resJsonObject.getString("response");
-                    Log.d("responseAdd",res);
                     if(res.equals(getString(R.string.yes))){
                         toast("شخص اضافه شد");
                     }else{
                         toast(getString(R.string.wrong_login));
                         res = resJsonObject.getString("msg");
-                        Log.d("responseAdd",res);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -404,7 +471,6 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
         errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d("response",error.getMessage());
                 toast(getString(R.string.add_person_unsuccessful));
             }
         };
@@ -428,11 +494,8 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
         return false;
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
-        return true;
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

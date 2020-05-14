@@ -9,22 +9,26 @@ import java.util.ArrayList;
 public class Course implements Parcelable {
     private int courseID,userID,numberOfSessions,cost;
     private String title;
-    private String startDate,time;
+    private String startDate,time,examDate,examTime;
     private ArrayList<Session> sessions;
+    private ArrayList<String> cSchedule;
 
 
-
-    public Course(int userID, int numberOfSessions, int cost, java.lang.String title, String startDate,String time,
-                  ArrayList<Session> sessions) {
+    public Course(int courseID, int userID, int numberOfSessions,
+                  int cost, String title, String startDate, String time,
+                  String examDate, String examTime, ArrayList<Session> sessions,ArrayList<String> cSchedule) {
+        this.courseID = courseID;
         this.userID = userID;
         this.numberOfSessions = numberOfSessions;
         this.cost = cost;
         this.title = title;
         this.startDate = startDate;
         this.time = time;
+        this.examDate = examDate;
+        this.examTime = examTime;
         this.sessions = sessions;
+        this.cSchedule = cSchedule;
     }
-
 
     public Course() {
     }
@@ -38,7 +42,10 @@ public class Course implements Parcelable {
         title = in.readString();
         startDate = in.readString();
         time = in.readString();
-        this.sessions = in.readArrayList(null);
+        examDate = in.readString();
+        examTime = in.readString();
+        sessions = in.createTypedArrayList(Session.CREATOR);
+        cSchedule = in.createStringArrayList();
     }
 
     public static final Creator<Course> CREATOR = new Creator<Course>() {
@@ -118,6 +125,29 @@ public class Course implements Parcelable {
         this.sessions = sessions;
     }
 
+    public String getExamDate() {
+        return examDate;
+    }
+
+    public void setExamDate(String examDate) {
+        this.examDate = examDate;
+    }
+
+    public String getExamTime() {
+        return examTime;
+    }
+
+    public void setExamTime(String examTime) {
+        this.examTime = examTime;
+    }
+
+    public ArrayList<String> getcSchedule() {
+        return cSchedule;
+    }
+
+    public void setcSchedule(ArrayList<String> cSchedule) {
+        this.cSchedule = cSchedule;
+    }
 
     @Override
     public int describeContents() {
@@ -133,6 +163,9 @@ public class Course implements Parcelable {
         parcel.writeString(title);
         parcel.writeString(startDate);
         parcel.writeString(time);
-        parcel.writeList(sessions);
+        parcel.writeString(examDate);
+        parcel.writeString(examTime);
+        parcel.writeTypedList(sessions);
+        parcel.writeStringList(cSchedule);
     }
 }

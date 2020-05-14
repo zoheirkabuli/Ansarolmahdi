@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -28,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static com.example.ansarolmahdi.AddCourse.DATE_FORMAT;
 
@@ -58,8 +61,7 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
 
         init();
         runToolbar();
-        postAction();
-        attemptCourses();
+
 
 
         fabPerson.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +119,6 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
         resListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("TAGTAG",response.toString());
                 try {
                     progressDialog.dismiss();
                     courses = new ArrayList<>();
@@ -134,6 +135,8 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
                         crs.setStartDate(temp.getString("startdate"));
                         crs.setCourseID(temp.getInt("courseid"));
                         crs.setTime(temp.getString("time"));
+                        crs.setExamDate(temp.getString("examdate"));
+                        crs.setExamTime(temp.getString("examtime"));
                         courses.add(crs);
                         titles.add(crs.getTitle());
                     }
@@ -149,7 +152,7 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
         errorListener = new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                Log.d("response",error.getMessage());
+                Log.d("response",error.getMessage());
             }
         };
     }
@@ -165,6 +168,19 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
     public void onItemClick(int position) {
         Intent intent = new Intent(Courses.this, DetailCourse.class);
         intent.putExtra(KEY_COURSE,courses.get(position));
+        Log.d("TAGTAG", "onItemClick: " + courses.get(position).getCost());
         startActivity(intent);
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        postAction();
+        attemptCourses();
     }
 }

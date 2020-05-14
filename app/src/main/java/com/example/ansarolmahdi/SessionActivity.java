@@ -3,6 +3,7 @@ package com.example.ansarolmahdi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -11,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static com.example.ansarolmahdi.Courses.KEY_COURSE;
 import static com.example.ansarolmahdi.DetailCourse.KEY_SESSION;
@@ -69,4 +72,10 @@ public class SessionActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
 }

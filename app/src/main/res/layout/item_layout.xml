@@ -20,7 +20,6 @@
         android:textSize="20sp"
         android:layout_margin="20dp"
         android:textDirection="rtl"
-        android:fontFamily="@font/iransans"
         android:layout_gravity="center"
         android:gravity="center"/>
 

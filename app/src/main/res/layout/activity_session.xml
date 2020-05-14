@@ -37,7 +37,6 @@
             android:text="عنوان تکلیف"
             android:gravity="center"
             android:textSize="20sp"
-            android:fontFamily="@font/iransans"
             android:textFontWeight="700"
             android:padding="15dp"
             android:textDirection="rtl"/>
@@ -57,7 +56,6 @@
             android:text="@string/detail_test"
             android:padding="15dp"
             android:textSize="20sp"
-            android:fontFamily="@font/iransans"
             />
     </LinearLayout>
 
@@ -72,7 +70,6 @@
         android:layout_margin="10dp"
         android:text="لیست حضور و غیاب"
         android:textSize="20sp"
-        android:padding="10dp"
-        android:fontFamily="@font/iransans"/>
+        android:padding="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

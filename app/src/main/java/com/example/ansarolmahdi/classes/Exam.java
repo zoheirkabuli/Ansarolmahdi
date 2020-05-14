@@ -6,7 +6,7 @@ public class Exam {
     private int examID,courseID;
     private String string;
     private Time time;
-    private java.lang.String title;
+    private String title;
 
     public Exam(int courseID, String string, Time time, java.lang.String title) {
         this.courseID = courseID;
