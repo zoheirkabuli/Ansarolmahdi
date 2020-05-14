@@ -458,7 +458,7 @@ public class AddCourse extends AppCompatActivity implements TimePickerDialog.OnT
                     resJsonObject = new JSONObject(response);
                     res = resJsonObject.getString("response");
                     if(res.equals(getString(R.string.yes))){
-                        toast("شخص اضافه شد");
+                        toast("دوره اضافه شد");
                     }else{
                         toast(getString(R.string.wrong_login));
                         res = resJsonObject.getString("msg");

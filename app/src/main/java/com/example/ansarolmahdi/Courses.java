@@ -119,6 +119,7 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
         resListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("responce", "onResponse: " + response.toString());
                 try {
                     progressDialog.dismiss();
                     courses = new ArrayList<>();
@@ -135,8 +136,14 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
                         crs.setStartDate(temp.getString("startdate"));
                         crs.setCourseID(temp.getInt("courseid"));
                         crs.setTime(temp.getString("time"));
-                        crs.setExamDate(temp.getString("examdate"));
-                        crs.setExamTime(temp.getString("examtime"));
+                        if (temp.getString("examtime") == "no"
+                        && temp.getString("examdate") == "no"){
+                            crs.setExamTime("ندارد");
+                            crs.setExamDate("ندارد");
+                        }else{
+                            crs.setExamTime(temp.getString("examtime"));
+                            crs.setExamDate(temp.getString("examdate"));
+                        }
                         courses.add(crs);
                         titles.add(crs.getTitle());
                     }

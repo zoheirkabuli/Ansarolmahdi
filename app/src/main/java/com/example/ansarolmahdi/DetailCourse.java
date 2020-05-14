@@ -85,6 +85,17 @@ public class DetailCourse extends AppCompatActivity implements MyAdapter.OnItemL
     private void setText() {
         mTimeClock.setText(changeStyleTime(course.getTime()));
         mCostNumber.setText(course.getCost() + "");
+        mExamDateNum.setText(course.getExamDate());
+        mExamTimeClock.setText(changeStyleTime(course.getExamTime()));
+
+        mStudentsList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mIntent = new Intent(DetailCourse.this,CourseStudent.class);
+                mIntent.putExtra(KEY_COURSE,course.getCourseID());
+                startActivity(mIntent);
+            }
+        });
     }
 
     private void setAdapter() {
