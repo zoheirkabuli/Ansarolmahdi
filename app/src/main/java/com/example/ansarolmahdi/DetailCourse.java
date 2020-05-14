@@ -86,19 +86,14 @@ public class DetailCourse extends AppCompatActivity implements MyAdapter.OnItemL
         mTimeClock.setText(changeStyleTime(course.getTime()));
         mCostNumber.setText(course.getCost() + "");
         mExamDateNum.setText(course.getExamDate());
-//        if (course.getExamTime().equals("ندارد")){
-//            mExamTimeClock.setText(course.getExamTime());
-//        }else {
-//            mExamTimeClock.setText(changeStyleTime(course.getExamTime()));
-//        }
-        Log.d("TAGTAG", "setText: " + course.getExamTime());
+        mExamTimeClock.setText(changeStyleTime(course.getExamTime()));
 
 
         mStudentsList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(DetailCourse.this,CourseStudent.class);
-                mIntent.putExtra(KEY_COURSE,course.getCourseID());
+                mIntent.putExtra("COURSEID",course.getCourseID());
                 mIntent.putExtra(KEY_COURSE,course.getTitle());
                 startActivity(mIntent);
             }
@@ -219,9 +214,9 @@ public class DetailCourse extends AppCompatActivity implements MyAdapter.OnItemL
                     }
 
 
-                    Log.d("TAGTAG", "onResponse: " + schedule);
+
                     course.setcSchedule(schedule);
-                    Log.d("TAGTAG", "onResponse: en: " + enToPerArray(schedule));
+
                     tvWeekDays.setText(enToPerArray(schedule));
 
                 } catch (JSONException e) {
@@ -260,7 +255,6 @@ public class DetailCourse extends AppCompatActivity implements MyAdapter.OnItemL
         String holder = "";
 
         for (int i = 0; i < array.size(); i++) {
-            Log.d("TAGTAG", "enToPerArray: " + array.get(i));
             if (array.get(i).equals("sat")){
                 holder += "شنبه، ";
             }else if (array.get(i).equals("sun")){

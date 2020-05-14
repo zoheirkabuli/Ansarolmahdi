@@ -119,7 +119,6 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
         resListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("responce", "onResponse: " + response.toString());
                 try {
                     progressDialog.dismiss();
                     courses = new ArrayList<>();
@@ -181,7 +180,6 @@ public class Courses extends AppCompatActivity implements MyAdapter.OnItemListen
     public void onItemClick(int position) {
         Intent intent = new Intent(Courses.this, DetailCourse.class);
         intent.putExtra(KEY_COURSE,courses.get(position));
-        Log.d("TAGTAG", "onItemClick: " + courses.get(position).getCost());
         startActivity(intent);
     }
 

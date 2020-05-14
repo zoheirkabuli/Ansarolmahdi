@@ -113,7 +113,7 @@ public class AddPerson extends AppCompatActivity {
                         resListener,errorListener,map);
                 vh.sendRequest();
             }else {
-
+                toast("تائید رمز ورود یکسان نیست");
             }
 
         }
@@ -123,7 +123,6 @@ public class AddPerson extends AppCompatActivity {
         resListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("TAGTAG",response.toString());
                 try {
                     Log.d("responseAdd",response.toString());
                     progressDialog.dismiss();

@@ -12,6 +12,7 @@
     <string name="teachers">teachers</string>
     <string name="coursesessions">coursesessions</string>
     <string name="coursestudent">coursestudents</string>
+    <string name="allstudents">allstudents</string>
     <string name="schedule">schedule</string>
     <string name="yes">yes</string>
     <string name="wait">لطفا صبر کنید...</string>
@@ -32,4 +33,7 @@
         <item>پنجشنبه</item>
         <item>جمعه</item>
     </string-array>
+
+    <string name="permissiongranted">دسترسی صادر شد</string>
+    <string name="permissiondenied">دسترسی صادر نشد</string>
 </resources>

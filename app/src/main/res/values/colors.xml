@@ -6,4 +6,9 @@
     <color name="white">#ffffff</color>
     <color name="primary_transparent">#116200EE</color>
     <color name="gray_25">#F5F5F5</color>
+    <color name="color_background">#3e3e3e</color>
+    <color name="black_transparent">#55000000</color>
+    <color name="black_transparent2">#cc000000</color>
+    <color name="black_transparent3">#ee000000</color>
+    <color name="colorPrimaryTransparent">#cc6200EE</color>
 </resources>
