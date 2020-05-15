@@ -258,11 +258,11 @@ public class CourseStudent extends AppCompatActivity implements MyAdapter.OnItem
         };
     }
 
-    private void dialogSure(final Student student) {
+    private void dialogSureSecond(final Student student) {
 
         di = new Dialog(CourseStudent.this, R.style.dialog_theme);
         di.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        di.setContentView(R.layout.dialog_sure);
+        di.setContentView(R.layout.dialog_sure_second);
         di.getWindow().getAttributes().windowAnimations = R.anim.abc_fade_out;
         di.getWindow().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         di.setCanceledOnTouchOutside(false);
@@ -367,7 +367,7 @@ public class CourseStudent extends AppCompatActivity implements MyAdapter.OnItem
 
     @Override
     public void onItemClick(int position) {
-        dialogSure(students.get(position));
+        dialogSureSecond(students.get(position));
     }
 
     protected void attachBaseContext(Context newBase) {
