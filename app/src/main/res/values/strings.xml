@@ -10,6 +10,8 @@
     <string name="addcourse">addcourse</string>
     <string name="courses">courses</string>
     <string name="teachers">teachers</string>
+    <string name="homework">homework</string>
+    <string name="addhomework">addhomework</string>
     <string name="coursesessions">coursesessions</string>
     <string name="coursestudent">coursestudents</string>
     <string name="allstudents">allstudents</string>
@@ -19,6 +21,7 @@
     <string name="user_pass_necessary">لطفا آدرس ایمیل و رمز عبور را وارد نمایید.</string>
     <string name="request_tag_string">STRING</string>
     <string name="wrong_login">اطلاعات وارد شده اشتباه است، لطفا دوباره تلاش نمایید.</string>
+    <string name="wrong_addhome">اطلاعات ثبت نشد، لطفا دوباره تلاش نمایید.</string>
     <string name="detail_test">متن تستی باید این تکلیف انجام شود تا تاریخ 5 خرداد</string>
     <string name="add_person_successful">شخص اضافه شد</string>
     <string name="add_person_unsuccessful">افزودن با مشکل مواجه شد. دوباره تلاش کنید</string>

@@ -50,6 +50,7 @@ public class DetailCourse extends AppCompatActivity implements MyAdapter.OnItemL
     private Session session;
     private ArrayList<Session> sessions;
     private ArrayList<String> sessionNumbers;
+    private ArrayList<Integer> sessionsIDs;
 
 //    server fields
     private Response.Listener<String> resListener;
@@ -155,6 +156,7 @@ public class DetailCourse extends AppCompatActivity implements MyAdapter.OnItemL
                     session = new Session();
                     sessions = new ArrayList<>();
                     sessionNumbers = new ArrayList<>();
+                    sessionsIDs = new ArrayList<>();
 
                     JSONObject object = new JSONObject(response);
                     JSONArray ja = object.getJSONArray("sessions");
@@ -168,7 +170,10 @@ public class DetailCourse extends AppCompatActivity implements MyAdapter.OnItemL
                         session.setSessionDate(temp.getString("sessiondate"));
                         session.setWeekDay(temp.getString("weekday"));
                         sessionNumbers.add( "جلسه " + session.getSessionNum());
+                        sessionsIDs.add(session.getSessionID());
+                        Log.d("TAGTAG", "onResponse: id :" + session.getSessionID());
                         sessions.add(session);
+                        Log.d("TAGTAG", "sessions: id :" + sessions.get(i).getSessionID());
 
                     }
                     setAdapter();
@@ -280,7 +285,8 @@ public class DetailCourse extends AppCompatActivity implements MyAdapter.OnItemL
     public void onItemClick(int position) {
         Intent dIntent = new Intent(DetailCourse.this,SessionActivity.class);
         dIntent.putExtra(KEY_COURSE,sessions.get(position).getCourseID());
-        dIntent.putExtra(KEY_SESSION,sessions.get(position).getSessionID());
+        dIntent.putExtra(KEY_SESSION,sessionsIDs.get(position));
+        Log.d("TAGTAG", "onItemClick: " + position + "____" + sessions.size() + "____" + sessionsIDs.get(position));
         dIntent.putExtra(KEY_SESSIONNUM,sessionNumbers.get(position));
         startActivity(dIntent);
 

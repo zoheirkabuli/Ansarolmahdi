@@ -1,8 +1,11 @@
 package com.example.ansarolmahdi.classes;
 
-public class HomeWork {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class HomeWork implements Parcelable {
     private int homeworkID,sessionID;
-    private java.lang.String text;
+    private String text;
     private String deadline;
 
     public HomeWork(int sessionID, java.lang.String text, String deadline) {
@@ -13,6 +16,25 @@ public class HomeWork {
 
     public HomeWork() {
     }
+
+    protected HomeWork(Parcel in) {
+        homeworkID = in.readInt();
+        sessionID = in.readInt();
+        text = in.readString();
+        deadline = in.readString();
+    }
+
+    public static final Creator<HomeWork> CREATOR = new Creator<HomeWork>() {
+        @Override
+        public HomeWork createFromParcel(Parcel in) {
+            return new HomeWork(in);
+        }
+
+        @Override
+        public HomeWork[] newArray(int size) {
+            return new HomeWork[size];
+        }
+    };
 
     public int getHomeworkID() {
         return homeworkID;
@@ -44,5 +66,18 @@ public class HomeWork {
 
     public void setDeadline(String deadline) {
         this.deadline = deadline;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(homeworkID);
+        parcel.writeInt(sessionID);
+        parcel.writeString(text);
+        parcel.writeString(deadline);
     }
 }
